@@ -3,6 +3,7 @@ git config --globel user.email "someemail@whatver.com"
 git config --global user.name "john citizen"
 git config --global credential.helper cache
 git config --global credential.helper "cache --timeout=3600"
+git config --global core.editor "vim"
 
 # create another local git repo
 cd /some/project/folder && git init
@@ -25,9 +26,26 @@ git push -u origin master
 
 # to make a local copy of git repo. do some local work. sync your repo with remote and push it
 git clone http://github.com/maviharjit/someotherrepolgit
+# git pull = git fetch + git merge
 git pull
 git push -u origin master
 
+# OMG. i pushed something that i dont want world to see
+# relax. reset to the last known good commit and force git push
+git log
+git reset --hard <hash for the commit where you want to go. the one before the mistake(s)>
+git push -f origin master 
+
+# OR. if you just want to get rid of the last n pushes. e.g 2
+git reset --hard ~2
+git push -f origin master
+
+
+
+# i want to reset to a past commit but dont want to lose local changes that i worked hard on
+git stash
+git reset --hard <commit hash>
+git pop
 
 # git pull vs git clone
 git clone is how you get a local copy of an existing repository to work on. It's usually only used once for a given repository, unless you want to have multiple working copies of it around. ... git pull (or git fetch + git merge ) is how you update that local copy with new commits from the remote repository.
