@@ -1,0 +1,34 @@
+# one time config for your git account
+git config --globel user.email "someemail@whatver.com"
+git config --global user.name "john citizen"
+git config --global credential.helper cache
+git config --global credential.helper "cache --timeout=3600"
+
+# create another local git repo
+cd /some/project/folder && git init
+
+# add, remove and manipulate files in your local repo
+git add somefile
+git status
+git rm anotherfile
+git diff
+git add *
+
+# commit changes to your local repo
+git commit -m "some comment" 
+
+# configure your local git repo to talk to remote git repo
+git remote add origin https://github.com/maviharjit/somerepo.git
+
+# push your changes to remote repo
+git push -u origin master
+
+# to make a local copy of git repo. do some local work. sync your repo with remote and push it
+git clone http://github.com/maviharjit/someotherrepolgit
+git pull
+git push -u origin master
+
+
+# git pull vs git clone
+git clone is how you get a local copy of an existing repository to work on. It's usually only used once for a given repository, unless you want to have multiple working copies of it around. ... git pull (or git fetch + git merge ) is how you update that local copy with new commits from the remote repository.
+
