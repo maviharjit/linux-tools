@@ -1,0 +1,10 @@
+# to connect to imap server securely
+openssl s_client -connect imap.somesite.com:993
+
+# talking imap
+. capacility
+. login user.name@imap.somesite.com passwordforuser
+. list "" "*"
+. status INBOX (messages)
+. status INBOX (recent)
+. logout

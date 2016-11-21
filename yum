@@ -1,0 +1,5 @@
+yum repolist
+yum install -y perl
+yum clean all
+yum info
+yum search

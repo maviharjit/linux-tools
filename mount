@@ -1,0 +1,16 @@
+sudo mount -t cifs -o username=adusername/myusername \\\\someserver\\Share-All-Read /mnt/misc
+mount -t cifs -o username=user //someserver/someshare /mnt/someshare
+
+# mount windows
+sudo mount -t cifs -o username=user //server/testShare /mnt/win
+sudo mount -t cifs -o username=user //server/Share-RO /mnt/win
+
+# mount home folder
+mount -t cifs -o username=user //server/Users$/user /mnt/h
+
+# mount filer
+mount -t cifs -o username=user //server/share/Public/logs /mnt/filer
+mount -t cifs -o username=user,rw //server/share/Public/logs /mnt/user
+
+# mount software share
+mount -t cifs -o username=user //server/share /mnt/software/

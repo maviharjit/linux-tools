@@ -1,0 +1,5 @@
+apt-get update
+apt-get install -y python
+
+apt-cache search java
+

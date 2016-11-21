@@ -1,0 +1,16 @@
+# mysql connect
+mysql -h hostname -uroot -p
+
+# mysqldump
+mysqldump -u root -p > dumpfile.sql
+
+# mysql restore
+mysql -u root -p < dumpfile.sql
+
+# msyql 
+show databases;
+show tables;
+select * from bla where fieldname like '%whateve%' limit 2; 
+\?
+show slave status;
+show master status;

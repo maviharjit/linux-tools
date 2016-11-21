@@ -1,0 +1,2 @@
+netstat -s
+netstat -ntlp

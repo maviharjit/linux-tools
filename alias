@@ -1,0 +1,8 @@
+## my aliases
+alias docker-compose="/usr/local/bin/docker-compose"
+alias mountforpia="sudo mount -o remount,exec,suid -i ~"
+alias rm-docker-images="sudo docker rmi $(sudo docker images -q)"
+alias rm-all-docker-images="sudo docker rmi -f $(sudo docker images -q)"
+alias rm-docker-containers="sudo docker rm $(sudo docker ps -a -q)"
+alias rm-all-docker-containers="sudo docker rm -f $(sudo docker ps -a -q)"
+alias vps="ssh user@server.com"

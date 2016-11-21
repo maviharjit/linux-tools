@@ -1,0 +1,10 @@
+-save > /tmp/iptables.rules
+vi /tmp/iptables.rules
+#iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+ -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+ -A INPUT -p tcp --dport ssh -j ACCEPT
+ -A INPUT -p tcp --dport 80 -j ACCEPT
+ -A INPUT -j DROP
+ -I INPUT 5 -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+cp /tmp/iptables.rules /etc/iptables.rules
+-restore < /etc/iptables.rules
