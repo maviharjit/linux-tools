@@ -1,0 +1,18 @@
+# cluster execute
+# when you want to execute a command on multiple server using ssh
+
+lets say i have servers names like below and ssh is set up with key based authentication
+myserver01 to myserver10
+
+Tip: do on number 10 manualy for proof of concept. then cluster execute 1 to 9
+
+# test my loop construct
+for i in `seq 2 9`; do echo myserver0$i; done
+
+# test by querying something read only
+for i in `seq 2 9`; do ssh -o StrictHostKeyChecking=no myserver0$i uptime; done
+
+# real deal. eg. copy a file to other servers
+for i in `seq 2 9`; do scp /tmp/some-file.zip myserver0$i:/tmp ; done
+
+# make it better by writing a bash script though that allows pre screened commands to run remotely
