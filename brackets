@@ -1,0 +1,3 @@
+# to ls junk77, junk88, junk99
+ls junk{77,88,99}
+

@@ -1,0 +1,42 @@
+curl -v https://somesite.on.internet.com
+
+# http 1.1
+curl -sD - -o /dev/null http://www.mysite.com
+
+# http 1.0
+curl -s0D - -o /dev/null http://www.mysite.com
+
+# display headers, send output to blackhole
+curl -s0D - -o /dev/null http://www.mysite.com
+HTTP/1.1 200 OK
+Date: Fri, 10 Jun 2011 16:06:29 GMT
+Server: IBM_HTTP_Server
+Accept-Ranges: bytes
+Connection: close
+Content-Type: text/html
+
+# display headers, send output to blackhole
+curl -sD - -o /dev/null http://www.mysite.com
+HTTP/1.1 200 OK
+Date: Fri, 10 Jun 2011 16:06:52 GMT
+Server: IBM_HTTP_Server
+Accept-Ranges: bytes
+Transfer-Encoding: chunked
+Content-Type: text/html
+
+# access site via proxy
+curl -sD - -o /dev/null -x proxy.mysite.net:3128 http://www.somesite.com
+HTTP/1.0 200 OK
+Date: Fri, 10 Jun 2011 16:24:25 GMT
+Server: IBM_HTTP_Server
+Accept-Ranges: bytes
+Content-Type: text/html
+X-Cache: MISS from cache-2
+X-Cache-Lookup: MISS from cache-2:80
+X-Cache: MISS from squid-14
+Via: 1.0 cache-2:80, 1.0 squid-14 (squid/3.1.0.13)
+Proxy-Connection: close
+
+nslookup proxy.mycompany.net
+85.158.139.228
+curl -x 85.158.139.228:3128 somesiteonline.com

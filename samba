@@ -1,0 +1,2 @@
+sudo net rpc join -S SERVERNAME -U username
+net ads status

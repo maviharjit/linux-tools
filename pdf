@@ -1,0 +1,2 @@
+ls | lpr -Ppdf
+ls -l | lpr -Ppdf && evince ~/PDF/_stdin_.pdf

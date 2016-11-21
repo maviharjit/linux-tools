@@ -1,0 +1,3 @@
+sudo /usr/bin/synergys -a 10.10.10.1:8077 -f --config .quicksynergy/synergy.conf
+sudo /usr/bin/synergys -a 10.10.10.1:8077 -f --config ~/myconfigs/synergy/synergy.conf > /dev/null 2>&1 &
+sudo /usr/bin/synergys -a 10.10.10.1:8077 -f --config ~/myconfigs/synergy/synergy.conf >> /var/log/synergy.log 2>>/var/log/synergy-error.log  &

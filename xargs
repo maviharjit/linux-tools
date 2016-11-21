@@ -1,0 +1,7 @@
+# list files and operate on them using xargs
+ls *.bz2 | xargs ls -l
+ls *.bz2 | xargs rm
+
+# (tar up  logs modified in last 24 hours using xargs. hostname evaulated on target machine due to ' instead of ")
+cluster-command 30 job 'find /var/log/jobserver -type f -name "jobserver_?.log.20" -mtime 0 | xargs tar -cjvf /var/tmp/`hostname -s`.tar.bz2'
+

@@ -1,0 +1,26 @@
+# pull bin scripts from tor1 to lo:bin.jump
+echo -e "\n\nPULLING FROM TOR1"
+rsync -avzr -e ssh tor1:/home/user/bin/ bin.jump
+rsync -avz -e ssh tor1:/home/user/.bashrc bin.jump
+rsync -avz -e ssh tor1:/home/user/.bash_aliases bin.jump
+
+# update local machines .bash_aliases
+cp bin.jump/.bash_aliases /home/user/.bash_aliases
+
+# push lo:bin.jump to gbp11
+echo -e "\n\nPUSHING TO GBP11"
+#rsync -avzr -e ssh --delete bin.jump/ gbp1:/home/user/bin/
+rsync -avzr -e ssh bin.jump/ gbp11:/home/user/bin/
+rsync -avz -e ssh /home/user/bin.jump/.bash* gbp11:/home/user/
+
+# push lo:bin.jump to gbp31
+echo -e "\n\nPUSHING TO GBP31"
+#rsync -avzr -e ssh --delete bin.jump/ gbp31:/home/user/bin/
+rsync -avzr -e ssh bin.jump/ gbp31:/home/user/bin/
+rsync -avz -e ssh /home/user/bin.jump/.bash* gbp31:/home/user/
+
+# push lo:bin.jump to myrpmbuilderbox
+echo -e "\n\nPUSHING TO MRMPBB"
+#rsync -avzr -e ssh --delete bin.jump/ rpmb:/home/user/bin/
+rsync -avzr -e ssh bin.jump/ rpmb:/home/user/work/bin/
+rsync -avz -e ssh /home/user/bin.jump/.bash* rpmb:/home/user/

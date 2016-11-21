@@ -1,0 +1,14 @@
+# lines starting with a digit
+grep '^[[:digit:]]' jan
+or
+grep '^[0-9]' jan
+
+# lines starting with a digit and followed by a .
+grep '^[0-9]\.' jan
+or
+grep '^[[:digit:]]\.' jan
+
+# lines starting with one/two digits and followd by a .
+grep '^[0-9]*[0-9]\.' jan
+or
+grep '^[[:digit:]]*[[:digit:]]\.' jan

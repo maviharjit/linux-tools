@@ -1,0 +1,128 @@
+sudo apt-get install subversion libapache2-svn
+
+sudo svnadmin create /var/svn/repos/
+
+sudo gedit /etc/apache2/mods-enabled/dav_svn.conf
+
+<Location /svn> 
+
+# Uncomment this to enable the repository,
+DAV svn 
+
+# Set this to the path to your repository
+SVNPath /var/svn/repos 
+
+sudo htpasswd -cm /etc/apache2/dav_svn.passwd user
+
+sudo /etc/init.d/apache2 restart
+
+(use this. don't use other one i.e. svn.cmd)
+http://10.10.10.1/svn and http://10.10.10.1/websvn
+=================================================================
+svn co file:///var/svn/repos mysvn
+cd mysvn
+cp ~/whatevder .
+
+svn status mysvn
+svn add mysvn/*.bz2
+svn delete mysvn/*.bla
+svn status mysvn
+
+sudo svn commit mysvn
+sudo rm -rf mysvn
+
+http://10.10.10.1/share
+==========================
+(sharing LARGE LOG files)
+don't share huge files via svn anymore
+use http://10.10.10.1/share/ instead
+for creating more such share e.g. share2 create synlink in /var/www and place actual stuff in /share2 
+
+(clean the old stuff when adding new)
+sudo rm /share/<stalestuff>
+sudo cp newstuff/* /share
+
+(make sure permissions are ok)
+chmod -R --reference=/share /share
+or
+chmod -R www-data:www-data /share
+
+#a2dissite
+#a2ensite
+
+(restart apache)
+/etc/init.d/apache2 reload
+or
+service apache2 reload
+
+remove older revisions from svn
+==============================
+svnadmin dump /path/to/current/repo -r8:11 > small_svn.dump (dump revision 8 to 11 ignoring older revisions)
+svnadmin create /path/to/new/repo
+svnadmin load /path/to/new/repo < small_svn.dump
+
+e.g.
+svnadmin dump /var/svn/repos -r 11 > small_svn.dump
+sudo svnadmin create /var/svn/repo2
+sudo svnadmin load /var/svn/repo2 < small_svn.dump
+
+adding repos to websvn
+======================
+vi /etc/websvn/svn_deb_conf.inc
+$config->addRepository("repo 2", "file:///var/svn/repo2");
+refresh the url http://10.10.10.1/websvn/ and see the effect immediately
+select the appropriate repo from combo box.
+disable the old repo in svn_deb_conf.inc if required
+delete the old repo if required
+rm -rf /var/svn/repos
+disable the http://10.10.10.1/svn site
+a2dissite svn
+service apache2 reload
+
+my personal repo
+================
+sudo svnadmin create /var/svn/personal
+sudo vi /etc/websvn/svn_deb_conf.inc
+$config->addRepository("personal repo", "file:///var/svn/personal");
+
+svn co file:///var/svn/personal mysvn
+svn status mysvn
+svn add mysvn/*
+svn status mysvn
+sudo svn commit mysvn
+
+password protect personal repo
+================
+(start svnserver)
+svnserve -d -r /var/svn/personal
+
+vi /var/svn/personal/conf/svnserve.conf
+[general]
+ auth-access = none
+ auth-access = write
+ password-db = passwd
+
+vi /var/svn/personal/conf/passwd
+ username = mysecret
+
+svn co --username username --password mysecret svn://localhost/ mysvn2
+
+so
+i can connet to protected repo using password
+websvn is able to coonect to protected repo using password
+but apache does not ask for password
+
+approach not good.
+abandon approach and set apache password for /websvn
+
+(edit apache conf for site)
+vi /etc/websvn/apache.conf
+add this "AllowOverride AuthConfig"
+
+(create htpasswd file out of apache land for security reasons)
+sudo mkdir /home/secure
+sudo htpasswd -c /home/secure/htpasswd myusername (current pass is secret...)
+
+(make sure apache can read the file)
+sudo chown www-data:www-data /home/secure/htpasswd
+
