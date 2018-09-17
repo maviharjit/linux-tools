@@ -1,3 +1,6 @@
+# nocomments construct
+cat <filename> | grep -v \# | sed '/^$/ d'
+
 ## sed find a pattern and add a line before or after that pattern
 # before a line
 sed -i '/pattern/i \
