@@ -1,0 +1,17 @@
+named pipes
+
+first lets us see an unnamed pipe
+ls -l /etc/ | more
+
+now lets see a named pipe
+lets do it from one terminal
+mkfifo mypipe
+ls -l /etc > mypipe
+
+ls -l mypile 
+will show you that it is a pipe, first char is p
+
+now go to the second terminal
+cat < mypipe
+
+
