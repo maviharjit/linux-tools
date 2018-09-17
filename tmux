@@ -1,5 +1,7 @@
 tmux is just like screen but better
 
+https://tmuxcheatsheet.com/
+
 tmux
 launch tmux
 
@@ -9,6 +11,9 @@ create a new window
 
 ^b , 
 rename a window
+
+^b $
+rename current session
 
 ^b n 
 goto next window
