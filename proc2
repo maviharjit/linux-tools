@@ -1,0 +1,8 @@
+ls /proc
+cat /proc/cpuinfo
+cat proc/meminfo
+cat proc/swaps
+cat proc/stat
+cat proc/version
+cat proc/uptime
+cat proc/vmstat
