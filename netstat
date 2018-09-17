@@ -1,2 +1,6 @@
 netstat -s
 netstat -ntlp
+netstat -nlp
+
+# list all listening sockets
+netstat -xl
