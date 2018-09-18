@@ -1,0 +1,2 @@
+# set system time using ntpd
+ntpdate -s time.nist.gov
