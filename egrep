@@ -1,0 +1,2 @@
+cat /var/log/messages | egrep "something|anotherthing|stillanotherthing"
+
