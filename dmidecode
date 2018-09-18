@@ -1,0 +1,13 @@
+# check RAM details
+dmidecode --type 17
+
+
+# find motherboard type
+dmidecode -s baseboard-product-name
+FRS780M
+
+# to find more details about motherboard
+dmidecode -t baseboard
+
+# to find details about all hardware
+dmidecode 
