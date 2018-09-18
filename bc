@@ -1,0 +1,3 @@
+yum install bc
+
+echo "2+3" | bc
