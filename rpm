@@ -1,0 +1,16 @@
+# dry run install for package bla
+rpm -Uvh --test bla.rpm
+
+# install package bla
+rpm -Uvh bla.rpm
+
+rpm -qa | grep nginx
+
+# query info for a package
+rpm -qi nginx
+
+# list all files for this package
+rpm -ql nginx
+
+# which package owns this file
+rpm -qif
