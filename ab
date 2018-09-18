@@ -1,0 +1,6 @@
+# apache benchmark
+
+$ ab -k -c 350 -n 20000 example.com/
+
+By issuing the command above, you will be hitting http://example.com/ with 350 simultaneous connections 
+until 20 thousand requests are met. It will be done using the keep alive header.
