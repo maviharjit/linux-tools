@@ -1,0 +1,6 @@
+# list hardware
+yum install lshw
+
+lshw 
+
+lshw -short
