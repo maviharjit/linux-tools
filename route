@@ -1,0 +1,11 @@
+# show routing table
+route
+
+# delete default gw
+route del default
+
+# add default gw
+route add default gw 192.168.2.1 eth0
+
+# add net
+route add -net 192.56.76.0 netmask 255.255.255.0 dev eth0
