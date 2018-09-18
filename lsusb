@@ -1,1 +1,5 @@
+yum install usbutils
+
+lsusb
+
 lsusb | grep -i Ethernet
