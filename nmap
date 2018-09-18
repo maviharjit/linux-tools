@@ -1,3 +1,6 @@
+yum install nmap
+
 nmap -sTU <remote_host>
+
 nmap -v -sn 192.168.2.0/24 | grep -B1 "Host is up"
 
