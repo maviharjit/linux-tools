@@ -1,0 +1,5 @@
+echo "this is something" | md5sum 
+5ec9357e0c38adc805bb0004b36abcf1  -
+
+echo "this is something else" | md5sum 
+bcf680b55b96e0a965247d462f071ffb  -
