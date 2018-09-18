@@ -1,0 +1,10 @@
+ping bla.com
+
+# don't resolve hostnames
+ping -n bla.com
+
+# stop pinging after three packets
+ping -n -c3 bla.com
+
+# reverse lookup using ping
+ping -a 1.2.3.4
