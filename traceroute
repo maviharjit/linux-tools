@@ -1,0 +1,5 @@
+yum search traceroute
+
+yum install traceroute
+
+traceroute -n somesite.com
