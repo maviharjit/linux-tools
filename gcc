@@ -1,0 +1,7 @@
+# compile to default executable (a.out aka assembler.out)
+gcc sourcefile.c
+./a.out
+
+# compile to named executable
+gcc -o myExecutableFile sourcefile.c 
+./myExecutableFile
