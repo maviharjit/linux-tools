@@ -1,0 +1,21 @@
+# allow services / ports
+ufw allow ssh
+ufw allow 22
+
+# open vnc port 
+ufw allow from any to any port 5900 proto tcp
+
+# demy from an IP
+ufw deny from 15.15.15.51
+
+# deny inbound connections to an interface from an IP
+ufw deny in on eth0 from 15.15.15.51
+
+# allow 22 from an IP
+ufw allow from 15.15.15.0/24  to any port 22
+
+# allow incoming 80 and 443
+ufw allow proto tcp from any to any port 80,443
+
+ufw deny out 25
+
