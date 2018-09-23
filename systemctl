@@ -1,0 +1,6 @@
+systemctl status <daemon>
+systemctl stop <daemon>
+systemctl start <daemon>
+systemctl restart <daemon>
+
+systemctl --user enable --now ipfs
